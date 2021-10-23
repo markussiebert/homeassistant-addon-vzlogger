@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Example
+# Runs example1 script
+# ==============================================================================
+
+
+bashio::log.info "Starting vzlogger"
+echo $(bashio::services vzlogger "cfg") > /cfg/vzlogger.conf
+chmod a+x /cfg/vzlogger
+runuser -l vz -c '/usr/local/bin/vzlogger -c /cfg/vzlogger.conf --foreground'

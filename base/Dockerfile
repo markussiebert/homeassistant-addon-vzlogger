@@ -68,7 +68,7 @@ LABEL \
 # libsml is linked statically => no need to copy
 COPY --from=builder /usr/local/bin/vzlogger /usr/local/bin/vzlogger
 COPY --from=builder /usr/local/lib/libmbus.so* /usr/local/lib/
-COPY run.sh /
+COPY rootfs /
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -88,8 +88,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
-# RUN useradd -M -G dialout vz
-# USER vz
+RUN useradd -M -G dialout vz
 
 # Setup volume
 VOLUME ["/cfg"]

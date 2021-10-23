@@ -6,10 +6,19 @@
   "arch": ["armhf", "armv7", "amd64"],
   "startup": "application",
   "boot": "auto",
+  "usb": true,
   "options": {
+    "cfg": null,
     "device": null
   },
   "schema": {
     "device": "device(subsystem=tty)"
+  },
+  "ports": {
+    "8088/tcp": 10080
+  },
+  "ports_description": {
+    "8080/tcp": "vzlogger server"
   }
+
 }
