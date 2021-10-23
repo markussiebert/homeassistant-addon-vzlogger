@@ -85,8 +85,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     liblept5 \
     libmosquitto1 \
     libunistring2 \
-    && rm -rf /var/lib/apt/lists/* \
-    && chmod a+x /run.sh
+    && rm -rf /var/lib/apt/lists/*
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
 RUN useradd -M -G dialout vz
