@@ -6,6 +6,8 @@
 
 
 bashio::log.info "Starting vzlogger"
-echo $(bashio::services vzlogger "cfg") > /cfg/vzlogger.conf
+CFG=$(bashio::services vzlogger "cfg")
+bashio::log.info $CFG
+echo "$CFG" > /cfg/vzlogger.conf
 chmod a+x /cfg/vzlogger
 runuser -l vz -c '/usr/local/bin/vzlogger -c /cfg/vzlogger.conf --foreground'
