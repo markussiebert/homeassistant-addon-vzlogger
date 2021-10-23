@@ -22,5 +22,4 @@
     "8080/tcp": "vzlogger server"
   },
   "image": "ghcr.io/markussiebert/homeassistant-addon-vzlogger/{arch}:main"
-
 }
