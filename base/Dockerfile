@@ -27,15 +27,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /vzlogger \
     && cd /vzlogger \
-    git clone https://github.com/volkszaehler/libsml.git --depth 1 \
+    && git clone https://github.com/volkszaehler/libsml.git --depth 1 \
     && make install -C libsml/sml && \
     && cd /vzlogger \
-    git clone https://github.com/rscada/libmbus.git --depth 1 \
+    && git clone https://github.com/rscada/libmbus.git --depth 1 \
     && cd libmbus \
     && ./build.sh \
     && make install \
     && cd /vzlogger \
-    git clone https://github.com/volkszaehler/vzlogger.git --depth 1 \
+    && git clone https://github.com/volkszaehler/vzlogger.git --depth 1 \
     && cd vzlogger \
     && cmake -DBUILD_TEST=off \
     && make \
