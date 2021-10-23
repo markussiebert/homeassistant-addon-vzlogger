@@ -171,8 +171,8 @@ jobs:
           context: ${{ needs.information.outputs.target }}
           file: ${{ needs.information.outputs.target }}/Dockerfile
           tags: |
-            markussiebert/homeassistant-addon-vzlogger/${{ matrix.architecture }}:${{ github.sha }}
-            markussiebert/homeassistant-addon-vzlogger/${{ matrix.architecture }}:main
+            ghcr.io/markussiebert/homeassistant-addon-vzlogger/${{ matrix.architecture }}:${{ github.sha }}
+            ghcr.io/markussiebert/homeassistant-addon-vzlogger/${{ matrix.architecture }}:main
           cache-from: |
             type=local,src=/tmp/.docker-cache
           cache-to: type=local,mode=max,dest=/tmp/.docker-cache
