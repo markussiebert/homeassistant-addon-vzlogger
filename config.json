@@ -1,0 +1,12 @@
+{
+    "name": "vzLogger",
+    "version": "1",
+    "slug": "vzLogger",
+    "description": "vzlogger for homeassistant",
+    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+    "startup": "application",
+    "boot": "auto",
+    "options": {},
+    "schema": {},
+    "image": "ghcr.io/hassio-addons/debian-base/{arch}"
+  }
