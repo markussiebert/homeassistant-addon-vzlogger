@@ -1,4 +1,5 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:1d0629c
+
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM} as builder
 
@@ -24,22 +25,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmosquitto-dev \
     libunistring-dev \
     dh-autoreconf \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /vzlogger \
-    && cd /vzlogger \
-    && git clone https://github.com/volkszaehler/libsml.git --depth 1 \
-    && make install -C libsml/sml && \
-    && cd /vzlogger \
-    && git clone https://github.com/rscada/libmbus.git --depth 1 \
-    && cd libmbus \
-    && ./build.sh \
-    && make install \
-    && cd /vzlogger \
-    && git clone https://github.com/volkszaehler/vzlogger.git --depth 1 \
-    && cd vzlogger \
-    && cmake -DBUILD_TEST=off \
-    && make \
-    && make install
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /vzlogger
+RUN git clone https://github.com/volkszaehler/libsml.git --depth 1 && \
+    git clone https://github.com/rscada/libmbus.git --depth 1 && \
+    git clone https://github.com/volkszaehler/vzlogger.git --depth 1
+
+WORKDIR /vzlogger/libsml
+RUN make install -C sml
+
+WORKDIR /vzlogger/libmbus
+RUN ./build.sh && make install
+
+WORKDIR /vzlogger/vzlogger
+RUN cmake -DBUILD_TEST=off && \
+    make && make install
 
 # hadolint ignore=DL3006
 FROM $BUILD_FROM 
