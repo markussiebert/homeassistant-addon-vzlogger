@@ -81,7 +81,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmicrohttpd12 \
     libltdl7 \
     libatomic1 \
-    libjson-c3 \
+    libjson-c5 \
     liblept5 \
     libmosquitto1 \
     libunistring2 \
