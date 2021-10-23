@@ -1,19 +1,10 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:1d0629c
+# hadolint ignore=DL3006 Pin versions in apt get install.
+FROM ${BUILD_FROM} as builder
 
 ENV LANG C.UTF-8
 
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
-
-
-ARG BUILD_FROM
-FROM $BUILD_FROM as builder
-
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git-core \
     cmake \
@@ -32,29 +23,45 @@ RUN apt-get update && apt-get install -y \
     libmosquitto-dev \
     libunistring-dev \
     dh-autoreconf \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /vzlogger
-
-RUN git clone https://github.com/volkszaehler/libsml.git --depth 1 \
- && make install -C libsml/sml
-
-RUN git clone https://github.com/rscada/libmbus.git --depth 1 \
- && cd libmbus \
- && ./build.sh \
- && make install
-
-COPY . /vzlogger
-
-RUN cmake -DBUILD_TEST=off \
- && make \
- && make install
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /vzlogger \
+    && cd /vzlogger \
+    git clone https://github.com/volkszaehler/libsml.git --depth 1 \
+    && make install -C libsml/sml && \
+    && cd /vzlogger \
+    git clone https://github.com/rscada/libmbus.git --depth 1 \
+    && cd libmbus \
+    && ./build.sh \
+    && make install \
+    && cd /vzlogger \
+    git clone https://github.com/volkszaehler/vzlogger.git --depth 1 \
+    && cd vzlogger \
+    && cmake -DBUILD_TEST=off \
+    && make \
+    && make install
 
 FROM $BUILD_FROM 
 
-LABEL Description="vzlogger"
-
-
+# Labels
+# Labels
+LABEL \
+    io.hass.name="${BUILD_NAME}" \
+    io.hass.description="${BUILD_DESCRIPTION}" \
+    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" \
+    io.hass.version=${BUILD_VERSION} \
+    maintainer="Markus Siebert <mail@markussiebert.com>" \
+    org.opencontainers.image.title="${BUILD_NAME}" \
+    org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
+    org.opencontainers.image.vendor="Markus Siebert <mail@markussiebert.com>" \
+    org.opencontainers.image.authors="Markus Siebert <mail@markussiebert.com>" \
+    org.opencontainers.image.licenses="GNU General Public License v3.0" \
+    org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
+    org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
+    org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}
 
 # libsml is linked statically => no need to copy
 COPY --from=builder /usr/local/bin/vzlogger /usr/local/bin/vzlogger
@@ -84,5 +91,3 @@ USER vz
 
 # Setup volume
 VOLUME ["/cfg"]
-
-CMD [ "/run.sh" ]

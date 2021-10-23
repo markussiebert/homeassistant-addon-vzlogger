@@ -1,5 +1,5 @@
 {
-    "name": "vzLogger-dockerimage",
+    "name": "vzlogger",
     "version": "dev",
     "slug": "vzLogger",
     "description": "vzlogger for homeassistant",
