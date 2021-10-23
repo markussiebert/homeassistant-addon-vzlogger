@@ -1,15 +1,15 @@
 {
-    "name": "vzLogger",
-    "version": "1",
-    "slug": "vzLogger",
-    "description": "vzlogger for homeassistant",
-    "arch": ["armhf", "armv7", "amd64"],
-    "startup": "application",
-    "boot": "auto",
-    "options": {
-        "device": null
-    },
-    "schema": {
-        "device": "device(subsystem=tty)"
-    }
+  "name": "vzLogger",
+  "version": "1",
+  "slug": "vzLogger",
+  "description": "vzlogger for homeassistant",
+  "arch": ["armhf", "armv7", "amd64"],
+  "startup": "application",
+  "boot": "auto",
+  "options": {
+    "device": null
+  },
+  "schema": {
+    "device": "device(subsystem=tty)"
   }
+}

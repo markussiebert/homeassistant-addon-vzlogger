@@ -1,5 +1,5 @@
 {
-    "name": "HOMEASSISTANT-ADDON-VZLOGGER",
-    "url": "https://github.com/markussiebert/homeassistant-addon-vzlogger",
-    "maintainer": "Markus Siebert<mail@markussiebert.com>"
+  "name": "HOMEASSISTANT-ADDON-VZLOGGER",
+  "url": "https://github.com/markussiebert/homeassistant-addon-vzlogger",
+  "maintainer": "Markus Siebert<mail@markussiebert.com>"
 }
