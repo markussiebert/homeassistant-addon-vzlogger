@@ -1,0 +1,7 @@
+{
+    "build_from": {
+      "amd64": "ghcr.io/hassio-addons/debian-base/amd64:1d0629c",
+      "armhf": "ghcr.io/hassio-addons/debian-base/armhf:1d0629c",
+      "armv7": "ghcr.io/hassio-addons/debian-base/armv7:1d0629c"
+    }
+}
