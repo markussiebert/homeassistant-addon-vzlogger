@@ -1,0 +1,8 @@
+{
+    "name": "vzLogger-dockerimage",
+    "version": "1",
+    "slug": "vzLogger",
+    "description": "vzlogger for homeassistant",
+    "url": "https://github.com/markussiebert/homeassistant-addon-vzlogger",
+    "arch": ["armhf", "armv7", "amd64"]
+  }
