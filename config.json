@@ -6,7 +6,11 @@
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
-    "options": {},
-    "schema": {},
+    "options": {
+        "device": null
+    },
+    "schema": {
+        "device": "device(subsystem=tty)"
+    },
     "image": "ghcr.io/hassio-addons/debian-base/{arch}"
   }
