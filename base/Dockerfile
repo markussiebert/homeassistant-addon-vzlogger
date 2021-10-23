@@ -1,9 +1,10 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:1d0629c
-# hadolint ignore=DL3006 Pin versions in apt get install.
+# hadolint ignore=DL3006
 FROM ${BUILD_FROM} as builder
 
 ENV LANG C.UTF-8
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git-core \
@@ -40,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && make \
     && make install
 
+# hadolint ignore=DL3006
 FROM $BUILD_FROM 
 
 # Labels
@@ -68,6 +70,7 @@ COPY --from=builder /usr/local/bin/vzlogger /usr/local/bin/vzlogger
 COPY --from=builder /usr/local/lib/libmbus.so* /usr/local/lib/
 COPY run.sh /
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libcurl4 \
     libgnutls30 \
