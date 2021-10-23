@@ -12,6 +12,7 @@
     "device": null
   },
   "schema": {
+    "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
     "device": "device(subsystem=tty)"
   },
   "ports": {
@@ -19,6 +20,7 @@
   },
   "ports_description": {
     "8080/tcp": "vzlogger server"
-  }
+  },
+  "image": "ghcr.io/markussiebert/homeassistant-addon-vzlogger/{arch}:main"
 
 }
