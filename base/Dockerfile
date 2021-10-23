@@ -45,7 +45,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 FROM $BUILD_FROM 
 
 # Labels
-# Labels
 LABEL \
     io.hass.name="${BUILD_NAME}" \
     io.hass.description="${BUILD_DESCRIPTION}" \
