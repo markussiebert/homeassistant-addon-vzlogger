@@ -1,4 +1,5 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:1d0629c
+ARG YQ_VERSION="v4.13.5"
 
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM} as builder
@@ -28,7 +29,14 @@ RUN echo $(uname -m) && \
     dh-autoreconf \
     dpkg-dev \
     && rm -rf /var/lib/apt/lists/* \
-    && dpkg-architecture -q DEB_BUILD_ARCH
+    && dpkg-architecture -q DEB_BUILD_ARCH \
+    && case "$(dpkg-architecture -q DEB_BUILD_ARCH)" in \
+        amd64) export YQ_BINARY="yq_linux_amd64";; \
+        armhf) export YQ_BINARY="yq_linux_arm";; \
+    esac \
+    && echo "$YQ_BINARY" \
+    && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq && \
+    chmod +x /usr/bin/yq
 
 WORKDIR /vzlogger
 RUN git clone https://github.com/volkszaehler/libsml.git --depth 1 && \
@@ -71,9 +79,8 @@ LABEL \
 # libsml is linked statically => no need to copy
 COPY --from=builder /usr/local/bin/vzlogger /usr/local/bin/vzlogger
 COPY --from=builder /usr/local/lib/libmbus.so* /usr/local/lib/
+COPY --from=builder /usr/bin/yq /usr/bin/yq
 COPY rootfs /
-
-ARG YQ_VERSION="v4.13.5"
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
