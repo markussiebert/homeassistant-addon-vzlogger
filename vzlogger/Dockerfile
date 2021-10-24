@@ -90,19 +90,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     liblept5 \
     libmosquitto1 \
     libunistring2 \
-    && rm -rf /var/lib/apt/lists/* \
-    && case "$(uname -m)" in \
-        armv7l) export YQ_BINARY="yq_linux_arm64" ;; \
-        muster2) export YQ_BINARY=  ;; \
-              ...
-              kommando ;;
-   mustern)   kommando
-              ...
-              kommando ;;
-esac
-
-    && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQBINARY} -O /usr/bin/yq && \
-    chmod a+x /usr/bin/yq
+    && rm -rf /var/lib/apt/lists/*
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
 RUN useradd -M -G dialout vz
