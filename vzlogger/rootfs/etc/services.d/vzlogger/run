@@ -7,10 +7,11 @@
 
 bashio::log.info "Starting vzlogger"
 CFG=$(bashio::config 'vzlogger')
+bashio::log.info "Received configuration:"
 bashio::log.info $CFG
 echo "$CFG" > /cfg/vzlogger.txt
 cat /cfg/vzlogger.txt | yq eval -o=j > /cfg/vzlogger.conf
-bashio::log.info "Configfile created"
+bashio::log.info "Configfile created, effective config:"
 bashio::log.info $(cat /cfg/vzlogger.conf)
 chmod a+x /cfg/vzlogger.conf
 runuser -l vz -c '/usr/local/bin/vzlogger -c /cfg/vzlogger.conf --foreground'
