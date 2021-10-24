@@ -1,10 +1,10 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:1d0629c
-ARG YQ_VERSION="v4.13.5"
 
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM} as builder
 
 ENV LANG C.UTF-8
+ENV YQ_VERSION="v4.13.5"
 
 # hadolint ignore=DL3008
 RUN echo $(uname -m) && \
