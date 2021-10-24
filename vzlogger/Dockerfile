@@ -26,7 +26,9 @@ RUN echo $(uname -m) && \
     libmosquitto-dev \
     libunistring-dev \
     dh-autoreconf \
-    && rm -rf /var/lib/apt/lists/*
+    dpkg-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && dpkg-architecture -q DEB_BUILD_ARCH
 
 WORKDIR /vzlogger
 RUN git clone https://github.com/volkszaehler/libsml.git --depth 1 && \
@@ -71,6 +73,8 @@ COPY --from=builder /usr/local/bin/vzlogger /usr/local/bin/vzlogger
 COPY --from=builder /usr/local/lib/libmbus.so* /usr/local/lib/
 COPY rootfs /
 
+ARG YQ_VERSION="v4.13.5"
+
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libcurl4 \
@@ -86,7 +90,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     liblept5 \
     libmosquitto1 \
     libunistring2 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && case "$(uname -m)" in \
+        armv7l) export YQ_BINARY="yq_linux_arm64" ;; \
+        muster2) export YQ_BINARY=  ;; \
+              ...
+              kommando ;;
+   mustern)   kommando
+              ...
+              kommando ;;
+esac
+
+    && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQBINARY} -O /usr/bin/yq && \
+    chmod a+x /usr/bin/yq
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
 RUN useradd -M -G dialout vz
