@@ -6,7 +6,8 @@ FROM ${BUILD_FROM} as builder
 ENV LANG C.UTF-8
 
 # hadolint ignore=DL3008
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN echo $(uname -m) && \
+    apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git-core \
     cmake \
