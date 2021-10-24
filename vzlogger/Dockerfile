@@ -33,6 +33,7 @@ RUN echo $(uname -m) && \
     && dpkg-architecture -q DEB_BUILD_ARCH \
     && case "$(dpkg-architecture -q DEB_BUILD_ARCH)" in \
         amd64) export YQ_BINARY="yq_linux_amd64";; \
+        armel) export YQ_BINARY="yq_linux_arm";; \
         armhf) export YQ_BINARY="yq_linux_arm";; \
     esac \
     && echo "$YQ_BINARY" \
