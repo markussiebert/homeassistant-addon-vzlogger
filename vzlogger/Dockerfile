@@ -28,6 +28,7 @@ RUN echo $(uname -m) && \
     libunistring-dev \
     dh-autoreconf \
     dpkg-dev \
+    wget
     && rm -rf /var/lib/apt/lists/* \
     && dpkg-architecture -q DEB_BUILD_ARCH \
     && case "$(dpkg-architecture -q DEB_BUILD_ARCH)" in \
