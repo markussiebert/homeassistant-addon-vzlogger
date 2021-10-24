@@ -9,5 +9,6 @@ bashio::log.info "Starting vzlogger"
 CFG=$(bashio::config 'cfg')
 bashio::log.info $CFG
 echo "$CFG" > /cfg/vzlogger.conf
+touch 
 chmod a+x /cfg/vzlogger.conf
 runuser -l vz -c '/usr/local/bin/vzlogger -c /cfg/vzlogger.conf --foreground'
