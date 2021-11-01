@@ -5,6 +5,7 @@
 # ==============================================================================
 
 CONFIG_PATH=/data/options.json
+bashio::log.info "$(cat /data/options.json)"
 bashio::log.info "Starting vzlogger"
 
 CFG="$(bashio::config 'vzlogger')"
