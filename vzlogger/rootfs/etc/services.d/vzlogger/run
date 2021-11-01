@@ -7,7 +7,7 @@
 CONFIG_PATH=/data/options.json
 bashio::log.info "Starting vzlogger"
 
-CFG=$(bashio::config 'vzlogger')
+CFG="$(bashio::config 'vzlogger')"
 bashio::log.info "Received configuration:"
 bashio::log.info $CFG
 echo "$CFG" > /cfg/vzlogger.txt
