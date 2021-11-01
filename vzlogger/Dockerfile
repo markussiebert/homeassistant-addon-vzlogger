@@ -9,6 +9,7 @@ ENV YQ_VERSION="v4.13.5"
 # hadolint ignore=DL3008
 RUN echo $(uname -m) && \
     apt-get update && apt-get install -y --no-install-recommends \
+    udev \
     build-essential \
     git-core \
     cmake \
