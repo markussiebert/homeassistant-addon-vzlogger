@@ -4,8 +4,9 @@
 # Runs example1 script
 # ==============================================================================
 
-
+CONFIG_PATH=/data/options.json
 bashio::log.info "Starting vzlogger"
+
 CFG=$(bashio::config 'vzlogger')
 bashio::log.info "Received configuration:"
 bashio::log.info $CFG
