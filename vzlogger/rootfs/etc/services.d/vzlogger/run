@@ -6,4 +6,5 @@ bashio::log.info "==============================================================
 bashio::log.info "$(cat /data/options.json)"
 bashio::log.info "=============================================================================="
 bashio::log.info "Starting vzlogger"
+chmod a+r /data/options.json
 runuser -l vz -c '/usr/local/bin/vzlogger -c /data/options.json --foreground'
