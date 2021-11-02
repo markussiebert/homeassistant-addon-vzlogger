@@ -24,10 +24,12 @@ for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev ); do
     # ( to launch a subshell here                                      
     (                      
         # shellcheck disable=SC2086                                                  
-        syspath="${sysdevpath%/dev}"                                   
+        syspath="${sysdevpath%/dev}" 
+        # shellcheck disable=SC2086                                           
         devname="$(udevadm info -q name -p $syspath)"      
         # shellcheck disable=SC2086                  
-        [[ "$devname" == "bus/"* ]] && exit                            
+        [[ "$devname" == "bus/"* ]] && exit     
+        # shellcheck disable=SC2086                                
         eval "$(udevadm info -q property --export -p $syspath)"        
         [[ -z "$ID_SERIAL" ]] && exit                                  
         echo "/dev/$devname - $ID_SERIAL"                              
