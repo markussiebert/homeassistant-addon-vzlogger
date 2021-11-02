@@ -18,12 +18,15 @@ the FTDI FT232 chipset.
     exit 0                                                             
 fi                                                                     
                                                                        
-devs=$( (                                                              
+devs=$( (    
+# shellcheck disable=SC2044                                                          
 for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev ); do    
     # ( to launch a subshell here                                      
-    (                                                                  
+    (                      
+        # shellcheck disable=SC2086                                                  
         syspath="${sysdevpath%/dev}"                                   
-        devname="$(udevadm info -q name -p $syspath)"                  
+        devname="$(udevadm info -q name -p $syspath)"      
+        # shellcheck disable=SC2086                  
         [[ "$devname" == "bus/"* ]] && exit                            
         eval "$(udevadm info -q property --export -p $syspath)"        
         [[ -z "$ID_SERIAL" ]] && exit                                  
