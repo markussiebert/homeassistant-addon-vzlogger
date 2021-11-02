@@ -1,13 +1,12 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 
-CONFIG_PATH=/data/options.json
+CONFIGFILE="$(bashio::config 'configfile')"
 bashio::log.info "=============================================================================="
 chmod a+x /etc/services.d/vzlogger/listdevices.sh
 bashio::log.info $(/etc/services.d/vzlogger/listdevices.sh)
 bashio::log.info "=============================================================================="
-bashio::log.info "$(cat /data/options.json)"
+bashio::log.info "$(cat $CONFIGFILE)"
 bashio::log.info "=============================================================================="
 bashio::log.info "Starting vzlogger"
-chmod a+r /data/options.json
-/usr/local/bin/vzlogger -c /data/options.json --foreground
+/usr/local/bin/vzlogger -c $CONFIGFILE --foreground
