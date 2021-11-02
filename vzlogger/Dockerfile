@@ -9,7 +9,6 @@ ENV YQ_VERSION="v4.13.5"
 # hadolint ignore=DL3008
 RUN echo $(uname -m) && \
     apt-get update && apt-get install -y --no-install-recommends \
-    udev \
     build-essential \
     git-core \
     cmake \
@@ -87,6 +86,7 @@ COPY rootfs /
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    udev \
     libcurl4 \
     libgnutls30 \
     libsasl2-2  \
