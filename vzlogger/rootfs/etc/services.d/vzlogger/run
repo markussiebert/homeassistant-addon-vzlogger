@@ -3,16 +3,8 @@
 
 CONFIG_PATH=/data/options.json
 bashio::log.info "=============================================================================="
-for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev); do
-    (
-        syspath="${sysdevpath%/dev}"
-        devname="$(udevadm info -q name -p $syspath)"
-        [[ "$devname" == "bus/"* ]] && exit
-        eval "$(udevadm info -q property --export -p $syspath)"
-        [[ -z "$ID_SERIAL" ]] && exit
-        bashio::log.info "/dev/$devname - $ID_SERIAL"
-    )
-done
+chmod a+x /etc/services.d/vzlogger/listdevices.sh
+bashio::log.info $(/etc/services.d/vzlogger/listdevices.sh)
 bashio::log.info "=============================================================================="
 bashio::log.info "$(cat /data/options.json)"
 bashio::log.info "=============================================================================="
