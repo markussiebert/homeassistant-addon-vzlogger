@@ -4,14 +4,14 @@
 CONFIGFILE="$(bashio::config 'configfile')"
 DEVICE="$(bashio::config 'device')"
 bashio::log.info "=============================================================================="
-chmod a+x /etc/services.d/vzlogger/listdevices.sh
 /etc/services.d/vzlogger/listdevices.sh
 bashio::log.info "=============================================================================="
 bashio::log.info "$(cat $CONFIGFILE)"
 bashio::log.info "=============================================================================="
 bashio::log.info "Starting vzlogger"
-cp $CONFIGFILE /home/vz/vzlogger.conf
-chown vz:vz /home/vz/vzlogger.conf
-chmod a+w /dev/stdout
-chmod a+rw $DEVICE
-runuser -l vz -c '/usr/local/bin/vzlogger -c /home/vz/vzlogger.conf --foreground'
+#cp $CONFIGFILE /home/vz/vzlogger.conf
+#chown vz:vz /home/vz/vzlogger.conf
+#chmod a+w /dev/stdout
+#chmod a+rw $DEVICE
+#runuser -l vz -c '/usr/local/bin/vzlogger -c /home/vz/vzlogger.conf --foreground'
+/usr/local/bin/vzlogger -c $CONFIGFILE --foreground

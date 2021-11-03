@@ -103,7 +103,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
-RUN useradd -G dialout vz && mkdir -p /home/vz && chown vz:vz /home/vz
-
+# RUN useradd -G dialout vz && mkdir -p /home/vz && chown vz:vz /home/vz
+RUN chmod a+x /etc/services.d/vzlogger/listdevices.sh && \
+    usermod -a -G dialout root
 # Setup volume
 VOLUME ["/cfg"]
