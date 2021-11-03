@@ -103,7 +103,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # without running a user context, no exec is possible and without the dialout group no access to usb ir reader possible
-RUN adduser root dialout
+RUN useradd -G dialout vz
 
 # Setup volume
 VOLUME ["/cfg"]
