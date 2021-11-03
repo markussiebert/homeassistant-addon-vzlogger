@@ -9,4 +9,6 @@ bashio::log.info "==============================================================
 bashio::log.info "$(cat $CONFIGFILE)"
 bashio::log.info "=============================================================================="
 bashio::log.info "Starting vzlogger"
-/usr/local/bin/vzlogger -c $CONFIGFILE --foreground
+cp $CONFIGFILE /home/vz/vzlogger.conf
+chown vz:vz /home/vz/vzlogger.conf
+runuser -u vz -c '/usr/local/bin/vzlogger -c /home/vz/vzlogger.conf --foreground'
