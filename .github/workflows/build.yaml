@@ -208,7 +208,7 @@ jobs:
   #             "repository": "${{ github.repository }}",
   #             "version": "${{ needs.information.outputs.version }}"
   #           }
-# 
+  # 
   # publish-beta:
   #   name: 📢 Publish to beta repository
   #   if: |
@@ -234,7 +234,7 @@ jobs:
   #             "repository": "${{ github.repository }}",
   #             "version": "${{ github.event.release.tag_name }}"
   #           }
-# 
+  #
   # publish-stable:
   #   name: 📢 Publish to stable repository
   #   if: needs.information.outputs.environment == 'stable'
