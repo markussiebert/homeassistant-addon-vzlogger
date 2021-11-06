@@ -208,7 +208,7 @@ jobs:
   #             "repository": "${{ github.repository }}",
   #             "version": "${{ needs.information.outputs.version }}"
   #           }
-  # 
+  #
   # publish-beta:
   #   name: 📢 Publish to beta repository
   #   if: |
