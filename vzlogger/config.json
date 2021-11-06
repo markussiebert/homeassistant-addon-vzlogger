@@ -1,7 +1,7 @@
 {
-  "name": "vzlogger",
+  "name": "vzlogger for homeassistant",
   "version": "dev",
-  "slug": "vzLogger",
+  "slug": "homeassistant-addon-vzlogger",
   "description": "vzlogger for homeassistant",
   "url": "https://github.com/markussiebert/homeassistant-addon-vzlogger",
   "arch": ["armhf", "armv7", "amd64"]
