@@ -36,8 +36,7 @@ RUN echo $(uname -m) && \
         armel) export YQ_BINARY="yq_linux_arm";; \
         armhf) export YQ_BINARY="yq_linux_arm";; \
     esac \
-    && echo "$YQ_BINARY" \
-    && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq && \
+    && wget --progress=dot:giga https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
 WORKDIR /vzlogger
