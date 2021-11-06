@@ -130,14 +130,14 @@ jobs:
           load: true
           # yamllint disable rule:line-length
           tags: |
-            ghcr.io/hassio-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}
-            ghcr.io/hassio-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
+            ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}
+            ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
           # yamllint enable rule:line-length
           context: ${{ needs.information.outputs.target }}
           file: ${{ needs.information.outputs.target }}/Dockerfile
           cache-from: |
             type=local,src=/tmp/.docker-cache
-            ghcr.io/hassio-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:edge
+            ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:edge
           cache-to: type=local,mode=max,dest=/tmp/.docker-cache-new
           platforms: ${{ steps.flags.outputs.platform }}
           build-args: |
@@ -162,7 +162,7 @@ jobs:
         run: |
           if vcn authenticate \
             --output json \
-            "docker://ghcr.io/hassio-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}" \
+            "docker://ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}" \
             | jq \
               --exit-status \
               '.verification.status != 0';
@@ -170,7 +170,7 @@ jobs:
             vcn login
             vcn notarize \
               --public \
-              "docker://ghcr.io/hassio-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
+              "docker://ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
           fi
         env:
           VCN_USER: ${{ secrets.VCN_USER }}
@@ -181,9 +181,9 @@ jobs:
         # yamllint disable rule:line-length
         run: |
           docker push \
-            ghcr.io/markussiebert/homeassistant-addon/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}"
+            "ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}"
           docker push \
-            "ghcr.io/markussiebert/homeassistant-addon/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
+            "ghcr.io/markussiebert/homeassistant-addons/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
 
   publish-edge:
     name: 📢 Publish to edge repository
