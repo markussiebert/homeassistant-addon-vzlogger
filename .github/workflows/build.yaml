@@ -157,26 +157,26 @@ jobs:
         run: |
           rm -rf /tmp/.docker-cache
           mv /tmp/.docker-cache-new /tmp/.docker-cache
-      - name: 🔏 Notarize
-        # yamllint disable rule:line-length
-        run: |
-          if vcn authenticate \
-            --output json \
-            "docker://ghcr.io/markussiebert/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}" \
-            | jq \
-              --exit-status \
-              '.verification.status != 0';
-          then
-            vcn login
-            vcn notarize \
-              --public \
-              "docker://ghcr.io/markussiebert/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
-          fi
-        env:
-          VCN_USER: ${{ secrets.VCN_USER }}
-          VCN_PASSWORD: ${{ secrets.VCN_PASSWORD }}
-          VCN_NOTARIZATION_PASSWORD: ${{ secrets.VCN_NOTARIZATION_PASSWORD }}
-          VCN_OTP_EMPTY: true
+      # - name: 🔏 Notarize
+      #   # yamllint disable rule:line-length
+      #   run: |
+      #     if vcn authenticate \
+      #       --output json \
+      #       "docker://ghcr.io/markussiebert/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}" \
+      #       | jq \
+      #         --exit-status \
+      #         '.verification.status != 0';
+      #     then
+      #       vcn login
+      #       vcn notarize \
+      #         --public \
+      #         "docker://ghcr.io/markussiebert/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
+      #     fi
+      #   env:
+      #     VCN_USER: ${{ secrets.VCN_USER }}
+      #     VCN_PASSWORD: ${{ secrets.VCN_PASSWORD }}
+      #     VCN_NOTARIZATION_PASSWORD: ${{ secrets.VCN_NOTARIZATION_PASSWORD }}
+      #     VCN_OTP_EMPTY: true
       - name: 🚀 Push
         # yamllint disable rule:line-length
         run: |
