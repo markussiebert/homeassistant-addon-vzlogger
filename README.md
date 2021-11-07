@@ -10,6 +10,7 @@ This Repository contains the dockerimage of the Home Assistant Addon for vzlogge
 This docker image is based on the a[addon-debian-base image](https://github.com/hassio-addons/addon-debian-base)
 
 ## Links
+
 🏠 [Homepage of vzlogger](https://wiki.volkszaehler.org/software/controller/vzlogger)<br />
 🏠 [Homepage of Home Assistant](https://www.home-assistant.io/)
 
