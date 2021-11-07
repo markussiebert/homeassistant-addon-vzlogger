@@ -9,11 +9,16 @@
   <a href="https://twitter.com/msiebert\_com" target="_blank">
     <img alt="Twitter: msiebert\_com" src="https://img.shields.io/twitter/follow/msiebert_com.svg?style=social" />
   </a>
+  ![Supports amd64 Architecture][amd64-shield]
+  ![Supports armhf Architecture][armhf-shield]
+  ![Supports armv7 Architecture][armv7-shield]
 </p>
 
 > ⚠️ **Clarification:** I am not the author of the great vzlogger software. Please visit [the vzlogger GitHub Repository](https://wiki.volkszaehler.org/software/controller/vzlogger) for more information.
 
 This Repository contains the dockerimage of the Home Assistant Addon for vzlogger. The addon was created to offer an easy to use way to integrate vzlogger to your Home Assistant setup, as it's the most powerfull metering tool I know at the moment.
+
+This docker image is based on the a[addon-debian-base image](https://github.com/hassio-addons/addon-debian-base)
 
 ### 🏠 [Homepage of vzlogger](https://wiki.volkszaehler.org/software/controller/vzlogger)
 
