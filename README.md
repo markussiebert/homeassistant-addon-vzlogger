@@ -1,5 +1,7 @@
 <!-- markdownlint-disable-file MD013 -->
+
 # Welcome to the Home Assistant Addon project for vzlogger 👋
+
 <p>
   <a href="https://github.com/markussiebert/home-assistant-addon-vzlogger" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
