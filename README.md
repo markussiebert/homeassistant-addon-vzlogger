@@ -1,7 +1,8 @@
 <!-- markdownlint-disable-file MD013 -->
+
 # Welcome to the Home Assistant Addon project for vzlogger 👋
 
-> ⚠️ **Clarification:** I am not the author of the great vzlogger software. 
+> ⚠️ **Clarification:** I am not the author of the great vzlogger software.
 > Please visit [the vzlogger GitHub Repository](https://wiki.volkszaehler.org/software/controller/vzlogger) for more information.
 
 This Repository contains the dockerimage of the Home Assistant Addon for vzlogger. The addon was created to offer an easy to use way to integrate vzlogger to your Home Assistant setup, as it's the most powerfull metering tool I know at the moment.
