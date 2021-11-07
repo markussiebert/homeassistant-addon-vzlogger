@@ -16,8 +16,8 @@
 
 This Repository contains the dockerimage of the Home Assistant Addon for vzlogger. The addon was created to offer an easy to use way to integrate vzlogger to your Home Assistant setup, as it's the most powerfull metering tool I know at the moment.
 
-### 🏠 [vzlogger](https://wiki.volkszaehler.org/software/controller/vzlogger)
-### 🏠 [Home Assistant](https://www.home-assistant.io/)
+### 🏠 [Homepage of vzlogger](https://wiki.volkszaehler.org/software/controller/vzlogger)
+### 🏠 [Homepage of Home Assistant](https://www.home-assistant.io/)
 
 ## Usage
 
