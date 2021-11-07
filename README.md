@@ -1,4 +1,5 @@
-<h1 align="center">Welcome to the Home Assistant Addon project for vzlogger 👋</h1>
+<!-- markdownlint-disable-file MD013 -->
+# Welcome to the Home Assistant Addon project for vzlogger 👋
 <p>
   <a href="https://github.com/markussiebert/home-assistant-addon-vzlogger" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -23,7 +24,7 @@ This docker image is based on the a[addon-debian-base image](https://github.com/
 
 ## Usage
 
-1. Add the [Home Assistant Community Addons by Markus Siebert](https://github.com/markussiebert/home-assistant-addons) repository.<br>
+1. Add the [Home Assistant Community Addons by Markus Siebert](https://github.com/markussiebert/home-assistant-addons)repository.<br>
    Follow the [Installing third-party add-ons](https://www.home-assistant.io/common-tasks/os/#installing-third-party-add-ons) guide.<br>
    Now you should see the addon in the Add-on-Store:<br>
    ![addon_repo_view](images/add_on_store_view.png)
