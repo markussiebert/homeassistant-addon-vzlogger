@@ -9,9 +9,6 @@
   <a href="https://twitter.com/msiebert\_com" target="_blank">
     <img alt="Twitter: msiebert\_com" src="https://img.shields.io/twitter/follow/msiebert_com.svg?style=social" />
   </a>
-  ![Supports amd64 Architecture][amd64-shield]
-  ![Supports armhf Architecture][armhf-shield]
-  ![Supports armv7 Architecture][armv7-shield]
 </p>
 
 > ⚠️ **Clarification:** I am not the author of the great vzlogger software. Please visit [the vzlogger GitHub Repository](https://wiki.volkszaehler.org/software/controller/vzlogger) for more information.
