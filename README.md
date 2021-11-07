@@ -15,9 +15,9 @@ This docker image is based on the a[addon-debian-base image](https://github.com/
 
 ## Usage
 
-1. Add the [Home Assistant Community Addons by Markus Siebert](https://github.com/markussiebert/home-assistant-addons) repository.  
-   Follow the [Installing third-party add-ons](https://www.home-assistant.io/common-tasks/os/#installing-third-party-add-ons) guide.  
-   Now you should see the addon in the Add-on-Store:  
+1. Add the [Home Assistant Community Addons by Markus Siebert](https://github.com/markussiebert/home-assistant-addons) repository.<br />
+   Follow the [Installing third-party add-ons](https://www.home-assistant.io/common-tasks/os/#installing-third-party-add-ons) guide.<br />
+   Now you should see the addon in the Add-on-Store:<br />
    ![addon_repo_view](images/add_on_store_view.png)
 2. Install the Addon
 3. Follow the [DOCS](DOCS.md) to configure your vzlogger installation.
